@@ -16,6 +16,7 @@ private:
 		Node* p_next;
 	};
 	//=to 24bites
+	// defines the beginning and end of each data member
 	void* bestFit(const int& bytes);
 	void CoalessRight(Node*);
 	void* CoalessLeft(Node*);
