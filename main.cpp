@@ -386,10 +386,12 @@ void numberGuesser()
 	int* p_min = (int*)m.allocate(sizeof(int));
 	int* p_guess = (int*)m.allocate(sizeof(int));
 	int* p_max = (int*)m.allocate(sizeof(int));
+	int* p_range = (int*)m.allocate(sizeof(int));
 	char* p_ynVar = (char*)m.allocate(sizeof(char) * 2);
 	p_min[0] = 1;
 	p_max[0] = 1000;
-	p_guess[0] = rand() % 1000;
+	p_range[0] = p_max[0] - p_min[0];
+	p_guess[0] = rand() % p_range[0];
 	p_ynVar[0] = 'n';
 	p_ynVar[1] = 'l';
 	cout << "Is your number: " << p_guess[0] << endl;
@@ -402,14 +404,14 @@ void numberGuesser()
 		if(p_ynVar[1] == 'H'||p_ynVar[1] == 'h')
 		{ 
 			p_min[0] = p_guess[0];
-			p_guess[0] = (rand() % p_max[0])+p_min[0];
-			
 		}
 		else if (p_ynVar[1]=='L'||p_ynVar[1]=='l')
 		{
 			p_max[0] = p_guess[0];
-			p_guess[0] = rand() % p_max[0];
 		}
+		p_range[0] = (p_max[0] - p_min[0]);
+		p_guess[0] = (rand() % p_range[0]) + p_min[0];
+
 		cout << "Is your number: " << p_guess[0] << endl;
 		cout << "Y or N" << endl;
 		cin >> p_ynVar[0];
